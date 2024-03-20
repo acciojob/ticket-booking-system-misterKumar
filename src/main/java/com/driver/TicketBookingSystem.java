@@ -22,7 +22,7 @@ public class TicketBookingSystem {
 				ticketQueue.offer(ticket);
 				System.out.println("Ticket '" + ticket + "' booked successfully.");
 			} else {
-				System.out.println("Ticket already booked.");
+				throw new IllegalArgumentException("Ticket already booked.");
 			}
 	    }
 
@@ -35,7 +35,7 @@ public class TicketBookingSystem {
 			} /*else if (cancelledTickets.contains(ticket)) {
 				System.out.println("Ticket '" + ticket + "' is already cancelled.");
 			} */else {
-				System.out.println("Ticket is not booked.");
+				throw new IllegalArgumentException("Ticket is not booked.");
 			}
 	    }
 
