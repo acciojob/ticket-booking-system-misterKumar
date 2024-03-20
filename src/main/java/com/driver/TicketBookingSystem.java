@@ -7,23 +7,44 @@ import java.util.Queue;
 import java.util.Scanner;
 
 public class TicketBookingSystem {
-	  private Queue<String> ticketQueue;
+		private Queue<String> ticketQueue;
 	    private Deque<String> cancelledTickets;
 
 	    public TicketBookingSystem() {
 	        // your code goes here
+			ticketQueue=new LinkedList<>();
+			cancelledTickets=new ArrayDeque<>();
 	    }
 
 	    public void bookTicket(String ticket) {
 	       // your code goes here
+			if (!ticketQueue.contains(ticket)) {
+				ticketQueue.offer(ticket);
+				System.out.println("Ticket '" + ticket + "' booked successfully.");
+			} else {
+				System.out.println("Ticket already booked.");
+			}
 	    }
 
 	    public void cancelTicket(String ticket) {
 	       // your code goes here
+			if (ticketQueue.contains(ticket)) {
+				ticketQueue.remove(ticket);
+				cancelledTickets.offer(ticket);
+				System.out.println("Ticket '" + ticket + "' cancelled successfully.");
+			} else if (cancelledTickets.contains(ticket)) {
+				System.out.println("Ticket '" + ticket + "' is already cancelled.");
+			} else {
+				System.out.println("Ticket is not booked.");
+			}
 	    }
 
 	    public void displayCurrentBookings() {
 	        // your code goes here
+			System.out.println("Current Bookings:");
+			for (String ticket : ticketQueue) {
+				System.out.println("- " + ticket);
+			}
 	    }
 
 	    public static void main(String[] args) {
