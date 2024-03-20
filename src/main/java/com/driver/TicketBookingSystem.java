@@ -32,9 +32,9 @@ public class TicketBookingSystem {
 				ticketQueue.remove(ticket);
 				cancelledTickets.offer(ticket);
 				System.out.println("Ticket '" + ticket + "' cancelled successfully.");
-			} else if (cancelledTickets.contains(ticket)) {
+			} /*else if (cancelledTickets.contains(ticket)) {
 				System.out.println("Ticket '" + ticket + "' is already cancelled.");
-			} else {
+			} */else {
 				System.out.println("Ticket is not booked.");
 			}
 	    }
